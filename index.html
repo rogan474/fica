@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Миссия: Поздравить Анфису 🎮</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Переключатель языков -->
+<div id="lang-switch">
+  <button data-lang="ru" class="active">🇷🇺 RU</button>
+  <button data-lang="en">🇬🇧 EN</button>
+  <button data-lang="ua">🇺🇦 UA</button>
+</div>
+
+<div id="confetti-container"></div>
+
+<!-- ========== СТАРТОВЫЙ ЭКРАН ========== -->
+<div class="screen active" id="start-screen">
+  <h1 class="title" data-i18n="title"></h1>
+  <p class="subtitle" data-i18n="subtitle"></p>
+  <button class="btn" data-i18n="startBtn" onclick="startGame()"></button>
+</div>
+
+<!-- ========== HUD ========== -->
+<div id="hud" style="display:none;">
+  <div class="score">📸 <span data-i18n="hudScore"></span>: <span id="score">0</span></div>
+  <div class="level"><span data-i18n="hudCollected"></span>: <span id="collected">0</span>/17</div>
+  <div class="timer">⏰ <span id="timer">40</span><span data-i18n="hudSeconds"></span></div>
+</div>
+
+<!-- ========== ИГРОВОЕ ПОЛЕ ========== -->
+<div id="game-area"></div>
+
+<!-- ========== ЭКРАН ПОБЕДЫ ========== -->
+<div class="screen" id="win-screen">
+  <div class="win-card">
+    <div class="main-photo-wrap">
+      <img src="img/ffica.png" alt="Анфиса" class="main-photo" 
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="photo-fallback">📸<br><small>Положи фото как<br>img/ffica.png</small></div>
+    </div>
+
+    <h1 data-i18n="winTitle"></h1>
+    <p data-i18n="winIntro"></p>
+
+    <div class="final-stats">
+      <strong data-i18n="statsTitle"></strong><br>
+      📸 <span data-i18n="statsCollected"></span>: <span id="final-collected">0</span>/17<br>
+      💣 <span data-i18n="statsBombs"></span>: <span id="final-bombs">0</span><br>
+      💯 <span data-i18n="statsScore"></span>: <span id="final-score">0</span><br>
+      ⏰ <span data-i18n="statsTime"></span>: <span id="final-time">0</span><span data-i18n="hudSeconds"></span>
+    </div>
+
+    <p data-i18n="realCongrats"></p>
+
+    <div class="meme-box" data-i18n="meme1"></div>
+    <div class="meme-box" data-i18n="meme2"></div>
+
+    <p class="final-line" data-i18n="finalLine"></p>
+
+    <button class="btn" data-i18n="playAgain" onclick="playAgain()"></button>
+  </div>
+</div>
+
+<!-- ========== ЭКРАН ПРОИГРЫША ========== -->
+<div class="screen" id="lose-screen">
+  <div class="lose-photo-wrap">
+    <img src="img/ffica.png" alt="Анфиса" class="lose-photo"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="photo-fallback">📸<br><small>img/ffica.png</small></div>
+  </div>
+  <h1 data-i18n="loseTitle"></h1>
+  <p id="lose-text"></p>
+  <button class="btn" data-i18n="playAgain" onclick="playAgain()"></button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
